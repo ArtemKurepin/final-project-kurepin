@@ -4,34 +4,63 @@ import Ru.Avito.Singleton.AvitoSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.time.Duration;
 
 public class LoginPage {
-    WebElement loginPage;
+    private static final Logger log = LoggerFactory.getLogger(LoginPage.class);
     WebDriver driver;
-    @FindBy(name = "login")
-    WebElement inputLogin;
-    @FindBy(name = "password")
-    WebElement inputPassword;
+    WebDriverWait wait;
+    WebElement loginPage;
+
+    private static final String FORM_PATH="//form[@data-marker=\"login-form\"]";
+    private static final By FORM_HEADER = By.xpath("//h2[contains(text(), 'Вход')]");
+    private static final By LABEL_LOGIN = By.xpath("//label[@data-marker=\"login-form/login\"]");
+    private static final By INPUT_PASSWORD = By.xpath("//input[@name='password']");
 
     public LoginPage(WebElement loginPage) {
         this.driver = AvitoSingleton.getDriver();
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.loginPage = loginPage;
+        PageFactory.initElements(this.driver, this);
     }
 
-    public void fillLoginInput(String login) {
-        inputLogin.sendKeys(login);
+    public LoginPage() {
+        this.driver = AvitoSingleton.getDriver();
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        PageFactory.initElements(this.driver, this);
     }
 
-    public void fillPasswordInput(String pass) {
-        inputPassword.sendKeys(pass);
+    public WebElement fillLoginInput(String login) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(LABEL_LOGIN));
+        driver.findElement(LABEL_LOGIN).findElement(By.tagName("input")).sendKeys(login);
+        return driver.findElement(LABEL_LOGIN).findElement(By.tagName("input"));
+    }
+
+    public WebElement fillPasswordInput(String pass) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(INPUT_PASSWORD));
+        driver.findElement(INPUT_PASSWORD).sendKeys(pass);
+        return driver.findElement(INPUT_PASSWORD);
     }
 
     public void clickSubmit() {
-        loginPage.findElement(By.tagName("button")).click();
+        driver.findElement(By.xpath(FORM_PATH)).
+                findElement(By.tagName("Button")).click();
+    }
+
+    public String getNonCorrectLoginPass(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(FORM_PATH+"/p")));
+        return driver.findElement(By.xpath(FORM_PATH+"/p")).getText();
     }
 
     public String getHeaderText() {
-        return loginPage.findElement(By.tagName("h2")).getText();
+        WebElement headerElement = wait.until(ExpectedConditions
+                .presenceOfElementLocated(FORM_HEADER));
+        return headerElement.getText();
     }
 }
