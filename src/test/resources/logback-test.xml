@@ -1,0 +1,35 @@
+<configuration>
+    <!-- Консольный вывод -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Запись в файл (простой аппендер) -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>target/logs/test.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Или аппендер с ротацией (рекомендуется) -->
+    <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>target/logs/test.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Ротация каждые сутки -->
+            <fileNamePattern>target/logs/test.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Хранение 30 дней -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="ROLLING_FILE" /> <!-- Используется ротируемый аппендер -->
+    </root>
+</configuration>

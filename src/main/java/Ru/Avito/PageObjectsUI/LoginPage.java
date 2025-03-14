@@ -1,6 +1,6 @@
-package Ru.Avito.PageObjects;
+package Ru.Avito.PageObjectsUI;
 
-import Ru.Avito.Singleton.AvitoSingleton;
+import Ru.Avito.Utils.Singleton.AvitoSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

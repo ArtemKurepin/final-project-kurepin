@@ -1,4 +1,4 @@
-package Ru.Avito.Singleton;
+package Ru.Avito.Utils.Singleton;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

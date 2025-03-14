@@ -1,12 +1,10 @@
 package AvitoUITest;
 
-import Ru.Avito.PageObjects.InputUtils;
-import Ru.Avito.PageObjects.MainPage;
-import Ru.Avito.Singleton.AvitoSingleton;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import Ru.Avito.PageObjectsUI.InputUtils;
+import Ru.Avito.PageObjectsUI.MainPage;
+import Ru.Avito.Utils.LogSaver;
+import Ru.Avito.Utils.Singleton.AvitoSingleton;
+import org.junit.jupiter.api.*;
 
 public class TestMainPageUI {
     public MainPage mp;
@@ -37,4 +35,8 @@ public class TestMainPageUI {
         AvitoSingleton.driverQuit();
     }
 
+    @AfterAll
+    public static void saveLogs() {
+        LogSaver.logSave();
+    }
 }
