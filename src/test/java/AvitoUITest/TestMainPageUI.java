@@ -30,8 +30,8 @@ public class TestMainPageUI {
     }
 
 
-    @AfterEach
-    public void driverQuit() {
+    @AfterAll
+    public static void driverQuit() {
         AvitoSingleton.driverQuit();
     }
 
