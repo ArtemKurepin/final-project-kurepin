@@ -34,7 +34,7 @@ public class TestGetReqestAPI {
 
     @Test
     public void testApiMainPage() {
-        RestAssured.baseURI = url;
+       baseURI = url;
         given()
                 .headers(AvitoJsonUtills.getHeaders("main")).then()
                 .statusCode(200)
@@ -44,7 +44,7 @@ public class TestGetReqestAPI {
 
     @Test
     public void testCategory() {
-        RestAssured.baseURI = url + "/web/1/category/tree";
+        baseURI = url + "/web/1/category/tree";
         given().headers(AvitoJsonUtills.getHeaders("categories"))
                 .cookie(AvitoJsonUtills.getCookieFromFile("category"))
                 .when()
@@ -58,7 +58,7 @@ public class TestGetReqestAPI {
 
     @Test
     public void testSearch() {
-        RestAssured.baseURI = url + "/all";
+       baseURI = url + "/all";
         given().headers(AvitoJsonUtills.getHeaders("search"))
                 .cookie(AvitoJsonUtills.getCookieFromFile("search")).contentType("application/json")
                 .queryParam("q", "java")
