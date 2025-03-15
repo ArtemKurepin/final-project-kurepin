@@ -6,6 +6,7 @@ import Ru.Avito.PageObjectsUI.MainPage;
 import Ru.Avito.Utils.LogSaver;
 import Ru.Avito.Utils.Singleton.AvitoSingleton;
 import org.junit.jupiter.api.*;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestLoginPage {
     public MainPage mp;
@@ -15,7 +16,7 @@ public class TestLoginPage {
 
     @Epic("UI Тесты")
     @BeforeEach
-    public  void before() {
+    public void before() {
         mp = new MainPage();
         mp.openHomePage();
         lp = new LoginPage(mp.openLoginElement());
@@ -45,12 +46,10 @@ public class TestLoginPage {
     }
 
     @AfterAll
-    public static void driverQuit() {
-        AvitoSingleton.driverQuit();
-    }
-
-    @AfterAll
-    public static void saveLogs() {
+    public static void afterAll() {
         LogSaver.logSave();
+        if (AvitoSingleton.checkDriverStatus()) {
+            AvitoSingleton.driverQuit();
+        }
     }
 }
