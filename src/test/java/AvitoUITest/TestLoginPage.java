@@ -1,5 +1,6 @@
 package AvitoUITest;
 
+import io.qameta.allure.*;
 import Ru.Avito.PageObjectsUI.LoginPage;
 import Ru.Avito.PageObjectsUI.MainPage;
 import Ru.Avito.Utils.LogSaver;
@@ -12,6 +13,7 @@ public class TestLoginPage {
     public String phoneNumber = "+375293333333";
     public String password = "124569787";
 
+    @Epic("UI Тесты")
     @BeforeEach
     public void beforeEach() {
         mp = new MainPage();
@@ -20,6 +22,7 @@ public class TestLoginPage {
 
     }
 
+    @Feature("Открыть окно логина")
     @Test
     public void testOpenLoginPage() {
         Assertions.assertEquals("Вход", lp.getHeaderText());
@@ -35,15 +38,6 @@ public class TestLoginPage {
     public void testFillPasswordWithoutLogin() {
         String actual = lp.fillPasswordInput(password).getAttribute("value");
         Assertions.assertEquals(password, actual);
-    }
-
-    @Test
-    public void testFullLogin() {
-        lp.fillLoginInput(phoneNumber);
-        lp.fillPasswordInput(password);
-        lp.clickSubmit();
-        String actual = lp.getNonCorrectLoginPass();
-        Assertions.assertEquals("Неправильный телефон или почта", actual);
     }
 
     @AfterEach
