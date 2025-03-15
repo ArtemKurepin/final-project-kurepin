@@ -6,7 +6,7 @@ import Ru.Avito.PageObjectsUI.MainPage;
 import Ru.Avito.Utils.LogSaver;
 import Ru.Avito.Utils.Singleton.AvitoSingleton;
 import org.junit.jupiter.api.*;
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestLoginPage {
     public MainPage mp;
     public LoginPage lp;
@@ -15,33 +15,37 @@ public class TestLoginPage {
 
     @Epic("UI Тесты")
     @BeforeEach
-    public void beforeEach() {
+    public  void before() {
         mp = new MainPage();
         mp.openHomePage();
         lp = new LoginPage(mp.openLoginElement());
 
     }
 
-    @Feature("Открыть окно логина")
+
     @Test
+    @Order(1)
     public void testOpenLoginPage() {
         Assertions.assertEquals("Вход", lp.getHeaderText());
     }
 
     @Test
+    @Order(2)
     public void testFillLoginWithoutPass() {
+
         String actual = lp.fillLoginInput(phoneNumber).getAttribute("value");
         Assertions.assertEquals(phoneNumber, actual);
     }
 
     @Test
+    @Order(3)
     public void testFillPasswordWithoutLogin() {
         String actual = lp.fillPasswordInput(password).getAttribute("value");
         Assertions.assertEquals(password, actual);
     }
 
-    @AfterEach
-    public void driverQuit() {
+    @AfterAll
+    public static void driverQuit() {
         AvitoSingleton.driverQuit();
     }
 
