@@ -75,7 +75,12 @@
             <artifactId>assertj-core</artifactId>
             <version>4.0.0-M1</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-engine</artifactId>
+            <version>1.11.0</version> <!-- или актуальная версия -->
 
+        </dependency>
     </dependencies>
     <build>
         <plugins>
