@@ -6,7 +6,7 @@ import Ru.Avito.Utils.LogSaver;
 import Ru.Avito.Utils.Singleton.AvitoSingleton;
 import org.junit.jupiter.api.*;
 
-import static Ru.Avito.Utils.Singleton.AvitoSingleton.driver;
+
 
 public class TestMainPageUI {
     public MainPage mp;
@@ -35,8 +35,6 @@ public class TestMainPageUI {
     @AfterAll
     public static void saveLogs() {
         LogSaver.logSave();
-        if (driver != null) {
             AvitoSingleton.driverQuit();
-        }
     }
 }
