@@ -18,7 +18,7 @@ public class LoginPage {
     WebDriverWait wait;
     WebElement loginPage;
 
-    private static final String FORM_PATH = "//form[@data-marker=\"login-form\"]";
+   // private static final String FORM_PATH = "//form[@data-marker=\"login-form\"]";
     private static final By FORM_HEADER = By.xpath("//h2[contains(text(), 'Вход')]");
     private static final By LABEL_LOGIN = By.xpath("//label[@data-marker=\"login-form/login\"]");
     private static final By INPUT_PASSWORD = By.xpath("//input[@name='password']");
