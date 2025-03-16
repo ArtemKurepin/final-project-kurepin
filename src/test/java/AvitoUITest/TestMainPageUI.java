@@ -35,8 +35,6 @@ public class TestMainPageUI {
     @AfterAll
     public static void afterAll() {
         LogSaver.logSave();
-        if (AvitoSingleton.checkDriverStatus()) {
-            AvitoSingleton.driverQuit();
-        }
+
     }
 }
