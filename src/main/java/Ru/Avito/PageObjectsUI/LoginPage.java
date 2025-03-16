@@ -18,7 +18,7 @@ public class LoginPage {
     WebDriverWait wait;
     WebElement loginPage;
 
-    private static final String FORM_PATH="//form[@data-marker=\"login-form\"]";
+    private static final String FORM_PATH = "//form[@data-marker=\"login-form\"]";
     private static final By FORM_HEADER = By.xpath("//h2[contains(text(), 'Вход')]");
     private static final By LABEL_LOGIN = By.xpath("//label[@data-marker=\"login-form/login\"]");
     private static final By INPUT_PASSWORD = By.xpath("//input[@name='password']");
@@ -27,6 +27,12 @@ public class LoginPage {
         this.driver = AvitoSingleton.getDriver();
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.loginPage = loginPage;
+        PageFactory.initElements(this.driver, this);
+    }
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         PageFactory.initElements(this.driver, this);
     }
 
@@ -51,11 +57,13 @@ public class LoginPage {
     public void clickSubmit() {
         driver.findElement(By.xpath(FORM_PATH)).
                 findElement(By.tagName("Button")).click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
-    public String getNonCorrectLoginPass(){
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(FORM_PATH+"/p")));
-        return driver.findElement(By.xpath(FORM_PATH+"/p")).getText();
+    public String getNonCorrectLoginPass() {
+        clickSubmit();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(FORM_PATH + "/p")));
+        return driver.findElement(By.xpath(FORM_PATH + "/p")).getText();
     }
 
     public String getHeaderText() {

@@ -33,7 +33,12 @@ public class MainPage {
         PageFactory.initElements(this.driver, this);
 
     }
+    public MainPage(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
+        PageFactory.initElements(this.driver, this);
 
+    }
     public void openHomePage() {
         driver.get(URL);
     }

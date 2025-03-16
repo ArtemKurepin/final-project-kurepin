@@ -6,6 +6,7 @@ import Ru.Avito.PageObjectsUI.MainPage;
 import Ru.Avito.Utils.LogSaver;
 import Ru.Avito.Utils.Singleton.AvitoSingleton;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestLoginPage {
@@ -17,6 +18,7 @@ public class TestLoginPage {
     @Epic("UI Тесты")
     @BeforeEach
     public void before() {
+
         mp = new MainPage();
         mp.openHomePage();
         lp = new LoginPage(mp.openLoginElement());

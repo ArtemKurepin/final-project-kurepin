@@ -1,0 +1,7 @@
+{
+  "status": "too-many-requests",
+  "result": {
+    "message": "Доступ с вашего IP-адреса временно ограничен",
+    "link": "ru.avito://1/firewall/captcha/show"
+  }
+}
