@@ -54,18 +54,6 @@ public class LoginPage {
         return driver.findElement(INPUT_PASSWORD);
     }
 
-    public void clickSubmit() {
-        driver.findElement(By.xpath(FORM_PATH)).
-                findElement(By.tagName("Button")).click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-    }
-
-    public String getNonCorrectLoginPass() {
-        clickSubmit();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(FORM_PATH + "/p")));
-        return driver.findElement(By.xpath(FORM_PATH + "/p")).getText();
-    }
-
     public String getHeaderText() {
         WebElement headerElement = wait.until(ExpectedConditions
                 .presenceOfElementLocated(FORM_HEADER));
