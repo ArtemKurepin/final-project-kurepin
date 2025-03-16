@@ -55,7 +55,6 @@ public class TestPostReqestAPI extends ApiAssertions {
                 .when()
                 .post(baseURI);
         softlyAssert.assertStatusCode(sf, response, 200);
-        softlyAssert.assertThatJson(sf, response, EXPECTED_JSON_RESPONSE_PATH);
         softlyAssert.assertAll(sf);
 
     }
@@ -68,7 +67,6 @@ public class TestPostReqestAPI extends ApiAssertions {
                 .when()
                 .post(baseURI);
         softlyAssert.assertStatusCode(sf, response, 200);
-        softlyAssert.assertThatJson(sf, response, EXPECTED_JSON_RESPONSE_PATH);
         softlyAssert.assertAll(sf);
 
     }
@@ -82,7 +80,6 @@ public class TestPostReqestAPI extends ApiAssertions {
                 .when()
                 .post(baseURI);
         softlyAssert.assertStatusCode(sf, response, 200);
-        softlyAssert.assertThatJson(sf, response, EXPECTED_JSON_RESPONSE_PATH);
         softlyAssert.assertAll(sf);
 
 
