@@ -64,6 +64,4 @@
 📧 Контакты
 Автор: Artem Kurepin
 
-Email: your.email@example.com
-
 GitHub: ArtemKurepin
