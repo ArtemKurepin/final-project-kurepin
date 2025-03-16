@@ -1,6 +1,1 @@
-{
-  "errors": {
-    "login": "Неправильный телефон или почта"
-  },
-  "success": false
-}
+{"errors":{"login":"Неправильный телефон или почта"},"success":false}
