@@ -29,6 +29,7 @@ public class AvitoSingleton {
            setOptions();
         }
         //  driver.manage().window().maximize();
+        driver.get("https://www.avito.ru");
         return driver;
     }
 
