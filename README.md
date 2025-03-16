@@ -63,6 +63,5 @@
 После запуска тестов сгенерируйте Allure-отчет.
 ---
 📧 Контакты
-Автор: Artem Kurepin
----
-GitHub: [ArtemKurepin](https://github.com/ArtemKurepin)
+### Автор: Artem Kurepin
+### GitHub: [ArtemKurepin](https://github.com/ArtemKurepin)
