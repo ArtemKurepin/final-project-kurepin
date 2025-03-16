@@ -16,7 +16,7 @@ public class MainPage {
     private WebDriver driver;
     private Wait wait;
 
-    private final String URL = "https://www.avito.ru/";
+    private final String URL = "https://www.avito.ru";
 
     @FindBy(className = "styles-module-input-rA1dB")
     public WebElement inputElement;
