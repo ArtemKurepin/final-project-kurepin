@@ -27,13 +27,11 @@ public class TestLoginPage {
 
 
     @Test
-    @Order(1)
     public void testOpenLoginPage() {
         Assertions.assertEquals("Вход", lp.getHeaderText());
     }
 
     @Test
-    @Order(2)
     public void testFillLoginWithoutPass() {
 
         String actual = lp.fillLoginInput(phoneNumber).getAttribute("value");
@@ -41,7 +39,6 @@ public class TestLoginPage {
     }
 
     @Test
-    @Order(3)
     public void testFillPasswordWithoutLogin() {
         String actual = lp.fillPasswordInput(password).getAttribute("value");
         Assertions.assertEquals(password, actual);
